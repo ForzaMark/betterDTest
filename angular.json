@@ -136,5 +136,8 @@
       }
     }
   },
-  "defaultProject": "drunkTester"
+  "defaultProject": "drunkTester",
+  "cli": {
+    "defaultCollection": "@nativescript/schematics"
+  }
 }
