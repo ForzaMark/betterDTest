@@ -15,10 +15,6 @@
   },
   "private": true,
   "dependencies": {
-    "nativescript-angular": "~7.2.0",
-    "nativescript-theme-core": "~1.0.4",
-    "reflect-metadata": "~0.1.12",
-    "tns-core-modules": "~5.2.0",
     "@angular/animations": "~7.2.0",
     "@angular/common": "~7.2.0",
     "@angular/compiler": "~7.2.0",
@@ -29,7 +25,12 @@
     "@angular/router": "~7.2.0",
     "@nativescript/schematics": "^0.5.2",
     "core-js": "^2.5.4",
+    "nativescript-accelerometer": "^2.0.1",
+    "nativescript-angular": "~7.2.0",
+    "nativescript-theme-core": "~1.0.4",
+    "reflect-metadata": "~0.1.12",
     "rxjs": "~6.3.3",
+    "tns-core-modules": "~5.2.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },
