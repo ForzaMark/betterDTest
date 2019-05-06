@@ -27,10 +27,12 @@
     "core-js": "^2.5.4",
     "nativescript-accelerometer": "^2.0.1",
     "nativescript-angular": "~7.2.0",
+    "nativescript-canvas": "^2.0.2",
     "nativescript-theme-core": "~1.0.4",
     "reflect-metadata": "~0.1.12",
     "rxjs": "~6.3.3",
     "tns-core-modules": "~5.2.0",
+    "tns-platform-declarations": "^5.3.2",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },

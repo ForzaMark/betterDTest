@@ -4,3 +4,4 @@
     <TextView *ngIf="accelerometerData" class="input input-border" text="{{accelerometerData.y}}"></TextView>
     <TextView *ngIf="accelerometerData" class="input input-border" text="{{accelerometerData.z}}"></TextView>
 </StackLayout>
+<CanvasView width="100" height="100" (draw)="drawInit($event)"></CanvasView>
