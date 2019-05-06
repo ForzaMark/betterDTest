@@ -1,1 +1,6 @@
-<Button text="auto-generated works!" class="btn btn-primary" (tap)="startAccelerometer()"></Button>
+<Button *ngIf="!accelerometerData" text="auto-generated works!" class="btn btn-primary" (tap)="startAccelerometer()"></Button>
+<StackLayout>
+    <TextView *ngIf="accelerometerData" class="input input-border" text="{{accelerometerData.x}}"></TextView>
+    <TextView *ngIf="accelerometerData" class="input input-border" text="{{accelerometerData.y}}"></TextView>
+    <TextView *ngIf="accelerometerData" class="input input-border" text="{{accelerometerData.z}}"></TextView>
+</StackLayout>
