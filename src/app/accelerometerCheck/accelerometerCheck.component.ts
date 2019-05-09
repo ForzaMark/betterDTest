@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AccelerometerData } from './types/AcceleroMeterData.type';
 import { CreateViewEventData } from 'tns-core-modules/ui/placeholder';
 import { CanvasPoint } from './types/CanvasPoint.type';
+import { AccelerometerService } from './services/accelerometer.service';
 
 @Component({
   selector: 'app-accelerometerCheck',
@@ -11,6 +12,7 @@ import { CanvasPoint } from './types/CanvasPoint.type';
 export class accelerometerCheckComponent implements OnInit {
 
   public accelerometerData: AccelerometerData;
+  private accelerometer = require('nativescript-accelerometer');
   public canvasPoint: CanvasPoint;
   public canvas: globalAndroid.graphics.Canvas;
   private canvasWidth: number;
@@ -21,30 +23,29 @@ export class accelerometerCheckComponent implements OnInit {
   private proovingState = false;
   private drunkCounter = 0;
 
-  constructor() { }
+  constructor(private readonly accelerometerService: AccelerometerService) { }
 
   ngOnInit() {
     this.canvasWidth = 1000;
     this.canvasHeight = 1000;
     this.areaRadius = 50;
-    this.startAccelerometer();
+    this.startAccelerometer(); // sollte permanent ausgeführt werden ... interval
   }
 
   public startAccelerometer(): void {
-    const accelerometer = require('nativescript-accelerometer');
-    accelerometer.startAccelerometerUpdates((data: AccelerometerData) => {
+    this.accelerometer.startAccelerometerUpdates((data: AccelerometerData) => {
       this.accelerometerData = data;
       this.canvasPoint = {
         x: this.accelerometerData.x * 750 + (this.canvasWidth / 2),
         y: this.accelerometerData.y * -750 + (this.canvasHeight / 2)
-      };
+      }; // hier canvaspoint auf accelerometerService.data setzen
       this.draw();
       if(this.proovingState && this.userInArea()) {
         this.drunkCounter = this.drunkCounter + 1;
       }
       if (this.drunkCounter >= 100) {
         alert('test finished');
-        accelerometer.stopAccelerometerUpdates();
+        this.accelerometer.stopAccelerometerUpdates();
       }
     }, { sensorDelay: 'ui' });
   }
