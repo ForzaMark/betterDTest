@@ -29,12 +29,12 @@ export class accelerometerCheckComponent implements OnInit {
     this.canvasWidth = 1000;
     this.canvasHeight = 1000;
     this.areaRadius = 50;
-    this.startAccelerometer(); // sollte permanent ausgeführt werden ... interval
+    this.accelerometerService.startAccelerometer(); // alle Accelerometer Data auf accelerometerServiceData ändern
   }
 
   public startAccelerometer(): void {
     this.accelerometer.startAccelerometerUpdates((data: AccelerometerData) => {
-      this.accelerometerData = data;
+      this.accelerometerData = this.accelerometerService.accelerometerData;
       this.canvasPoint = {
         x: this.accelerometerData.x * 750 + (this.canvasWidth / 2),
         y: this.accelerometerData.y * -750 + (this.canvasHeight / 2)
@@ -105,4 +105,11 @@ export class accelerometerCheckComponent implements OnInit {
     return this.areaRadius >= Math.sqrt(((this.canvasPoint.x - this.areaX) * (this.canvasPoint.x - this.areaX))
                                       + ((this.canvasPoint.y - this.areaY) * (this.canvasPoint.y - this.areaY)));
   }
+
+  // private acceleroMeterUpdate(){
+  //   setInterval(() => {
+  //     this.startAccelerometer();
+  //   }, 1000);
+    
+  // }
 }

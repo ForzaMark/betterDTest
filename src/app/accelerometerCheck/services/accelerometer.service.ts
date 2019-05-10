@@ -12,6 +12,7 @@ export class AccelerometerService {
 
   public startAccelerometer(){
     this.accelerometer.startAccelerometerUpdates((data: any) => {
+      console.log('läuft');
       this.accelerometerData = data;
     })
   }
