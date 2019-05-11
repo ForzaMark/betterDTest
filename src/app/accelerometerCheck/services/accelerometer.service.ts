@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
 import { Observable } from 'rxjs';
+import { AccelerometerData } from '../types/AcceleroMeterData.type';
 
 @Injectable({
   providedIn: 'root'
@@ -8,15 +9,15 @@ import { Observable } from 'rxjs';
 export class AccelerometerService {
 
   public accelerometer = require('nativescript-accelerometer');
-  public accelerometerData: any;
-  public accelerometerDataSubject = new Subject<any>();
+  public accelerometerData: AccelerometerData;
+  public accelerometerDataSubject = new Subject<AccelerometerData>();
 
   constructor() { }
 
   public startAccelerometer() {
-    this.accelerometer.startAccelerometerUpdates((data: any) => {
+    this.accelerometer.startAccelerometerUpdates((data: AccelerometerData) => {
       this.accelerometerData = data;
-      this.sendData(data);
+      this.setData(data);
     });
   }
 
@@ -24,11 +25,11 @@ export class AccelerometerService {
     this.accelerometer.stopAccelerometerUpdates();
   }
 
-  sendData(data: any) {
+  setData(data: AccelerometerData) {
       this.accelerometerDataSubject.next(data);
   }
 
-  getData(): Observable<any> {
+  getData(): Observable<AccelerometerData> {
       return this.accelerometerDataSubject.asObservable();
   }
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AccelerometerData } from './types/AcceleroMeterData.type';
 import { CreateViewEventData } from 'tns-core-modules/ui/placeholder';
 import { CanvasPoint } from './types/CanvasPoint.type';
 import { AccelerometerService } from './services/accelerometer.service';
