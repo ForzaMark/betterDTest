@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject, Subject } from 'rxjs';
+import { Subject } from 'rxjs/internal/Subject';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,9 @@ export class AccelerometerService {
 
   public startAccelerometer() {
     this.accelerometer.startAccelerometerUpdates((data: any) => {
+      console.log('acc')
       this.accelerometerData = data;
-      this.accelerometerDataSubject.next(1);
+      this.sendData(data);
     });
   }
 
@@ -23,8 +25,11 @@ export class AccelerometerService {
 
   }
 
-  public test() {
-    console.log('test')
-    this.accelerometerDataSubject.next(1);
+  sendData(data: any) {
+      this.accelerometerDataSubject.next(data);
+  }
+
+  getData(): Observable<any> {
+      return this.accelerometerDataSubject.asObservable();
   }
 }

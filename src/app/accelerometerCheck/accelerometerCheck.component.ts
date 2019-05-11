@@ -22,21 +22,20 @@ export class accelerometerCheckComponent implements OnInit {
   private areaRadius: number;
   private proovingState = false;
   private drunkCounter = 0;
+  public subscription: any;
 
-  constructor(private readonly accelerometerService: AccelerometerService) {
-    this.accelerometerService.accelerometerDataSubject.subscribe((next) => {
-      console.log('inSub');
-      this.startUpdating(next);
-    },
-    (err) => console.log(err)
-    );
+  constructor(private accelerometerService: AccelerometerService) {
+
+    this.subscription = this.accelerometerService.getData().subscribe(data => {
+       console.log(data.x);
+      });
    }
 
   ngOnInit() {
     this.accelerometerService.startAccelerometer();
     this.canvasWidth = 1000;
     this.canvasHeight = 1000;
-    this.areaRadius = 50; // alle Accelerometer Data auf accelerometerServiceData ändern
+    this.areaRadius = 50;
   }
 
   public startUpdating(data): void {
