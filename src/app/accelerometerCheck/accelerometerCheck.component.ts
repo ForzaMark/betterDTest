@@ -23,31 +23,36 @@ export class accelerometerCheckComponent implements OnInit {
   private proovingState = false;
   private drunkCounter = 0;
 
-  constructor(private readonly accelerometerService: AccelerometerService) { }
+  constructor(private readonly accelerometerService: AccelerometerService) {
+    this.accelerometerService.accelerometerDataSubject.subscribe((next) => {
+      console.log('inSub');
+      this.startUpdating(next);
+    },
+    (err) => console.log(err)
+    );
+   }
 
   ngOnInit() {
+    this.accelerometerService.startAccelerometer();
     this.canvasWidth = 1000;
     this.canvasHeight = 1000;
-    this.areaRadius = 50;
-    this.accelerometerService.startAccelerometer(); // alle Accelerometer Data auf accelerometerServiceData ändern
+    this.areaRadius = 50; // alle Accelerometer Data auf accelerometerServiceData ändern
   }
 
-  public startAccelerometer(): void {
-    this.accelerometer.startAccelerometerUpdates((data: AccelerometerData) => {
-      this.accelerometerData = this.accelerometerService.accelerometerData;
-      this.canvasPoint = {
-        x: this.accelerometerData.x * 750 + (this.canvasWidth / 2),
-        y: this.accelerometerData.y * -750 + (this.canvasHeight / 2)
-      }; // hier canvaspoint auf accelerometerService.data setzen
-      this.draw();
-      if(this.proovingState && this.userInArea()) {
-        this.drunkCounter = this.drunkCounter + 1;
-      }
-      if (this.drunkCounter >= 100) {
-        alert('test finished');
-        this.accelerometer.stopAccelerometerUpdates();
-      }
-    }, { sensorDelay: 'ui' });
+  public startUpdating(data): void {
+    console.log(data);
+    this.canvasPoint = {
+      x: data.x * 750 + (this.canvasWidth / 2),
+      y: data.y * -750 + (this.canvasHeight / 2)
+    }; // hier canvaspoint auf accelerometerService.data setzen
+    this.draw();
+    if (this.proovingState && this.userInArea()) {
+      this.drunkCounter = this.drunkCounter + 1;
+    }
+    if (this.drunkCounter >= 100) {
+      alert('test finished');
+      this.accelerometer.stopAccelerometerUpdates();
+    }
   }
 
   public draw(): void {
