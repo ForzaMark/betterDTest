@@ -15,14 +15,13 @@ export class AccelerometerService {
 
   public startAccelerometer() {
     this.accelerometer.startAccelerometerUpdates((data: any) => {
-      console.log('acc')
       this.accelerometerData = data;
       this.sendData(data);
     });
   }
 
   public stopAccelerometer() {
-
+    this.accelerometer.stopAccelerometerUpdates();
   }
 
   sendData(data: any) {

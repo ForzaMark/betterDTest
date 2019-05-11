@@ -11,46 +11,39 @@ import { AccelerometerService } from './services/accelerometer.service';
 })
 export class accelerometerCheckComponent implements OnInit {
 
-  public accelerometerData: AccelerometerData;
-  private accelerometer = require('nativescript-accelerometer');
   public canvasPoint: CanvasPoint;
   public canvas: globalAndroid.graphics.Canvas;
-  private canvasWidth: number;
-  private canvasHeight: number;
   private areaX: number;
   private areaY: number;
-  private areaRadius: number;
   private proovingState = false;
+  
+  private canvasHeight = 1000;
+  private canvasWidth = 1000;
+  private areaRadius = 50;
   private drunkCounter = 0;
-  public subscription: any;
 
   constructor(private accelerometerService: AccelerometerService) {
-
-    this.subscription = this.accelerometerService.getData().subscribe(data => {
-       console.log(data.x);
-      });
+    this.accelerometerService.getData().subscribe(data => {
+      this.canvasPoint = {
+          x: data.x * 750 + (this.canvasWidth / 2),
+          y: data.y * -750 + (this.canvasHeight / 2)
+      };
+      this.draw();
+      this.testDataInArea();
+    });
    }
 
   ngOnInit() {
     this.accelerometerService.startAccelerometer();
-    this.canvasWidth = 1000;
-    this.canvasHeight = 1000;
-    this.areaRadius = 50;
   }
 
-  public startUpdating(data): void {
-    console.log(data);
-    this.canvasPoint = {
-      x: data.x * 750 + (this.canvasWidth / 2),
-      y: data.y * -750 + (this.canvasHeight / 2)
-    }; // hier canvaspoint auf accelerometerService.data setzen
-    this.draw();
+  private testDataInArea() {
     if (this.proovingState && this.userInArea()) {
       this.drunkCounter = this.drunkCounter + 1;
     }
     if (this.drunkCounter >= 100) {
       alert('test finished');
-      this.accelerometer.stopAccelerometerUpdates();
+      this.accelerometerService.stopAccelerometer();
     }
   }
 
@@ -58,7 +51,9 @@ export class accelerometerCheckComponent implements OnInit {
     const blueColor = new android.graphics.Paint();
     blueColor.setARGB(255, 255, 0, 0);
     blueColor.setAntiAlias(true);
-    this.canvas.drawCircle(this.canvasPoint.x , this.canvasPoint.y, 5, blueColor );
+    if(this.canvas){
+      this.canvas.drawCircle(this.canvasPoint.x , this.canvasPoint.y, 5, blueColor );
+    }
   }
 
   private drawBorder(): void {
@@ -109,11 +104,4 @@ export class accelerometerCheckComponent implements OnInit {
     return this.areaRadius >= Math.sqrt(((this.canvasPoint.x - this.areaX) * (this.canvasPoint.x - this.areaX))
                                       + ((this.canvasPoint.y - this.areaY) * (this.canvasPoint.y - this.areaY)));
   }
-
-  // private acceleroMeterUpdate(){
-  //   setInterval(() => {
-  //     this.startAccelerometer();
-  //   }, 1000);
-    
-  // }
 }
