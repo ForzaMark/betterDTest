@@ -18,7 +18,7 @@ export class AccelerometerService {
     this.accelerometer.startAccelerometerUpdates((data: AccelerometerData) => {
       this.accelerometerData = data;
       this.setData(data);
-    });
+    },  { sensorDelay: "game" });
   }
 
   public stopAccelerometer() {

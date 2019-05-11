@@ -28,6 +28,13 @@ export class accelerometerCheckComponent implements OnInit {
   ngOnInit() {
     this.accelerometerService.startAccelerometer();
   }
+  
+  public startProoving(): void {
+    this.areaService.createArea(this.canvasService.canvasWidth, this.canvasService.canvasHeight);
+    this.canvasService.drawArea();
+    this.proovingState = true;
+    this.userInArea();
+  }
 
   private testDataInArea() {
     if (this.proovingState && this.userInArea()) {
@@ -37,13 +44,6 @@ export class accelerometerCheckComponent implements OnInit {
       alert('test finished');
       this.accelerometerService.stopAccelerometer();
     }
-  }
-
-  public startProoving(): void {
-    this.areaService.createArea(this.canvasService.canvasWidth, this.canvasService.canvasHeight);
-    this.canvasService.drawArea();
-    this.proovingState = true;
-    this.userInArea();
   }
 
   private userInArea(): boolean {
