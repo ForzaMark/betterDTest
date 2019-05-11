@@ -1,21 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AccelerometerService } from './services/accelerometer.service';
 import { CanvasService } from './services/canvas.service';
 import { AreaService } from './services/area.service';
+import { ListPicker } from 'tns-core-modules/ui/list-picker';
 
 @Component({
   selector: 'app-accelerometerCheck',
   templateUrl: './accelerometerCheck.component.html',
   styleUrls: ['./accelerometerCheck.component.css']
 })
-export class accelerometerCheckComponent implements OnInit {
+export class accelerometerCheckComponent {
   private proovingState = false;
+  public enterState = false;
   private drunkCounter = 0;
+  public drinks  = ['bier', 'pfeffi', 'radler'];
+  public selectedListPickerIndex: string;
 
   constructor(private accelerometerService: AccelerometerService,
               private canvasService: CanvasService,
               private areaService: AreaService) {
     this.accelerometerService.getData().subscribe(data => {
+      console.log(this.selectedListPickerIndex);
       this.canvasService.canvasPoint = {
           x: data.x * 750 + (this.canvasService.canvasWidth / 2),
           y: data.y * -750 + (this.canvasService.canvasHeight / 2)
@@ -25,10 +30,21 @@ export class accelerometerCheckComponent implements OnInit {
     });
    }
 
-  ngOnInit() {
+  public newDrink() {
+    this.enterState = true;
+  }
+
+  public enterDrink() {
     this.accelerometerService.startAccelerometer();
   }
-  
+
+  public drinkChanged(args: any) {
+    console.log('dirnkChanged');
+    const picker = <ListPicker>args.object;
+    this.selectedListPickerIndex = this.drinks[picker.selectedIndex];
+    //hshd
+  }
+
   public startProoving(): void {
     this.areaService.createArea(this.canvasService.canvasWidth, this.canvasService.canvasHeight);
     this.canvasService.drawArea();
