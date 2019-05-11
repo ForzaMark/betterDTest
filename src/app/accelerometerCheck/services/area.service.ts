@@ -9,11 +9,11 @@ export class AreaService {
   public areaY: number;
   public areaRadius = 50;
 
-  constructor(private canvasService: CanvasService) {}
+  constructor() {}
 
-  public createArea() {
-      this.areaX = this.getRandomInt(this.canvasService.canvasWidth);
-      this.areaY = this.getRandomInt(this.canvasService.canvasHeight);
+  public createArea(canvasWidth: number, canvasHeight: number) {
+      this.areaX = this.getRandomInt(canvasWidth);
+      this.areaY = this.getRandomInt(canvasHeight);
   }
 
   private getRandomInt(max: number): number {

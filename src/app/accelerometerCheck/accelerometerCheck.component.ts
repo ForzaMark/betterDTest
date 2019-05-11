@@ -40,7 +40,7 @@ export class accelerometerCheckComponent implements OnInit {
   }
 
   public startProoving(): void {
-    this.areaService.createArea();
+    this.areaService.createArea(this.canvasService.canvasWidth, this.canvasService.canvasHeight);
     this.canvasService.drawArea();
     this.proovingState = true;
     this.userInArea();
