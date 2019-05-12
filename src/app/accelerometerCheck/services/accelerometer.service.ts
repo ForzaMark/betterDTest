@@ -23,6 +23,7 @@ export class AccelerometerService {
 
   public stopAccelerometer() {
     this.accelerometer.stopAccelerometerUpdates();
+    this.accelerometerData = undefined;
   }
 
   setData(data: AccelerometerData) {

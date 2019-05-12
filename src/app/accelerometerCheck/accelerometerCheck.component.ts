@@ -68,8 +68,9 @@ export class accelerometerCheckComponent {
       this.drunkScore =  this.drunkScore + 1;
     }
     if (this.drunkCounter >= 100) {
-      alert('test finished with ' + this.drunkScore);
+      this.drunkCounter = 0;
       this.accelerometerService.stopAccelerometer();
+      this.enterState = false;
       this.writeCorrectlyToFile();
     }
   }
@@ -93,7 +94,7 @@ export class accelerometerCheckComponent {
     const myFile = fs.File.fromPath(path);
 
     myFile.readText().then(
-      (res) => console.log(res)
+      (res) => alert(res)
     ).catch((err) => console.log(err));
   }
 
@@ -104,7 +105,7 @@ export class accelerometerCheckComponent {
 
     myFile.readText().then(
       (res) => {
-        const content = res + ' | ' + this.selectedListPickerIndex + ' with score : ' + this.drunkScore;
+        const content = res + ' | ' + this.selectedListPickerIndex + ' with score : ' + this.drunkScore + '\n';
         myFile.writeText(content);
       }
     )
