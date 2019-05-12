@@ -1,5 +1,6 @@
 <StackLayout *ngIf="!accelerometerService.accelerometerData && !enterState">
     <Button class="btn btn-primary" text="New Drink" (tap)="newDrink()"></Button>
+    <Button class="btn btn-primary" text="New Party" (tap)="clearFile()"></Button>
 </StackLayout>
 <StackLayout *ngIf="!accelerometerService.accelerometerData && enterState">
     <ListPicker [items]="drinks" (selectedIndexChange)="drinkChanged($event)" class="p-15" text="drinks.name"></ListPicker>
@@ -13,4 +14,5 @@
     <Placeholder (creatingView)="canvasService.InitCanvas($event)" class="test b-black" style="color:#04ccf0; border: 5px solid #000;" text="test">sadadasd
     </Placeholder>
     <Button class="btn btn-primary" text="startProoving" (tap)="startProoving()"></Button>
+    <Button class="btn" (tap)="readFile()"></Button>
 </StackLayout>
