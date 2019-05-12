@@ -3,6 +3,9 @@ import { AccelerometerService } from './services/accelerometer.service';
 import { CanvasService } from './services/canvas.service';
 import { AreaService } from './services/area.service';
 import { ListPicker } from 'tns-core-modules/ui/list-picker';
+import { TextField } from 'tns-core-modules/ui/text-field';
+import { saveAs } from 'file-saver/src/FileSaver';
+import { Drink } from './types/drinkt.type';
 
 @Component({
   selector: 'app-accelerometerCheck',
@@ -13,7 +16,10 @@ export class accelerometerCheckComponent {
   private proovingState = false;
   public enterState = false;
   private drunkCounter = 0;
-  public drinks  = ['bier', 'pfeffi', 'radler'];
+  public drinks  = [new Drink('Bier', 5), new Drink('Likör', 18),
+                    new Drink('Wodka', 40), new Drink('Tequilla', 38),
+                    new Drink('Jägermeister', 35), new Drink('Gin', 45),
+                    new Drink('Sonstiges', 50), new Drink('Sonstiges härter', 60)];
   public selectedListPickerIndex: string;
 
   constructor(private accelerometerService: AccelerometerService,
@@ -39,11 +45,10 @@ export class accelerometerCheckComponent {
   }
 
   public drinkChanged(args: any) {
-    console.log('dirnkChanged');
     const picker = <ListPicker>args.object;
-    this.selectedListPickerIndex = this.drinks[picker.selectedIndex];
-    //hshd
+    this.selectedListPickerIndex = this.drinks[picker.selectedIndex].name;
   }
+
 
   public startProoving(): void {
     this.areaService.createArea(this.canvasService.canvasWidth, this.canvasService.canvasHeight);

@@ -4,6 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { accelerometerCheckComponent } from './accelerometerCheck/accelerometerCheck.component';
+import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
+import { NativeScriptRouterModule } from 'nativescript-angular/router';
+import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 
 @NgModule({
   declarations: [
@@ -12,7 +15,10 @@ import { accelerometerCheckComponent } from './accelerometerCheck/accelerometerC
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NativeScriptModule,
+    NativeScriptRouterModule,
+    NativeScriptFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
