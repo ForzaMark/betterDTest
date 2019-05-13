@@ -1,18 +1,11 @@
-<!-- <StackLayout *ngIf="!accelerometerService.accelerometerData && !enterState">
-    <Button class="btn btn-primary" text="New Drink" (tap)="newDrink()"></Button>
-    <Button class="btn btn-primary" text="New Party" (tap)="clearFile()"></Button>
-    <Button class="btn btn-primary" text="readFile" (tap)="readFile()"></Button>
-</StackLayout>
-<StackLayout *ngIf="!accelerometerService.accelerometerData && enterState">
-    <ListPicker [items]="drinks" (selectedIndexChange)="drinkChanged($event)" class="p-15" text="drinks.name"></ListPicker>
-    <Button class="btn btn-primary" text="Enter New Drink" (tap)="enterDrink()"></Button>
-</StackLayout> -->
-
 <StackLayout>
     <TextView class="input input-border" text="{{accelerometerService.accelerometerData.x}}"></TextView>
     <TextView class="input input-border" text="{{accelerometerService.accelerometerData.y}}"></TextView>
     <TextView class="input input-border" text="{{accelerometerService.accelerometerData.z}}"></TextView>
-    <Placeholder (creatingView)="canvasService.InitCanvas($event)" class="test b-black" style="color:#04ccf0; border: 5px solid #000;" text="test">sadadasd
+    <Placeholder (creatingView)="canvasService.InitCanvas($event)" 
+                 class="test b-black" 
+                 style="color:#04ccf0; border: 5px solid #000;" 
+                 text="test">
     </Placeholder>
     <Button class="btn btn-primary" text="startProoving" (tap)="startProoving()"></Button>
 </StackLayout>
