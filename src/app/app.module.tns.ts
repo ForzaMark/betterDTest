@@ -3,7 +3,7 @@ import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
 
 import { AppRoutingModule } from './app-routing.module.tns';
 import { AppComponent } from './app.component';
-import { accelerometerCheckComponent } from './accelerometerCheck/accelerometerCheck.component';
+import { AccelerometerCheckComponent } from './accelerometerCheck/accelerometerCheck.component';
 
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
@@ -15,7 +15,7 @@ import { accelerometerCheckComponent } from './accelerometerCheck/accelerometerC
 @NgModule({
   declarations: [
     AppComponent,
-    accelerometerCheckComponent,
+    AccelerometerCheckComponent,
   ],
   imports: [
     NativeScriptModule,

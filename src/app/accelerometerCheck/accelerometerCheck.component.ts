@@ -3,15 +3,15 @@ import { AccelerometerService } from './services/accelerometer.service';
 import { CanvasService } from './services/canvas.service';
 import { AreaService } from './services/area.service';
 import { ListPicker } from 'tns-core-modules/ui/list-picker';
-import * as fs from "tns-core-modules/file-system";
+import * as fs from 'tns-core-modules/file-system';
 import { Drink } from './types/drinkt.type';
 
 @Component({
-  selector: 'app-accelerometerCheck',
+  selector: 'app-accelerometer-check',
   templateUrl: './accelerometerCheck.component.html',
   styleUrls: ['./accelerometerCheck.component.css']
 })
-export class accelerometerCheckComponent {
+export class AccelerometerCheckComponent {
   private proovingState = false;
   public enterState = false;
   private allCount = false;
@@ -49,7 +49,7 @@ export class accelerometerCheckComponent {
   }
 
   public drinkChanged(args: any) {
-    const picker = <ListPicker>args.object;
+    const picker: ListPicker = args.object;
     this.selectedListPickerIndex = this.drinks[picker.selectedIndex].name;
   }
 
@@ -64,7 +64,7 @@ export class accelerometerCheckComponent {
     if (this.proovingState && this.userInArea()) {
       this.drunkCounter = this.drunkCounter + 1;
     }
-    if(this.firstTimeInArea()) {
+    if (this.firstTimeInArea()) {
       this.drunkScore =  this.drunkScore + 1;
     }
     if (this.drunkCounter >= 100) {
@@ -76,8 +76,11 @@ export class accelerometerCheckComponent {
   }
 
   private userInArea(): boolean {
-    return this.areaService.areaRadius >= Math.sqrt(((this.canvasService.canvasPoint.x - this.areaService.areaX) * (this.canvasService.canvasPoint.x - this.areaService.areaX))
-                                      + ((this.canvasService.canvasPoint.y - this.areaService.areaY) * (this.canvasService.canvasPoint.y - this.areaService.areaY)));
+    return this.areaService.areaRadius >=
+            Math.sqrt(((this.canvasService.canvasPoint.x - this.areaService.areaX) *
+                       (this.canvasService.canvasPoint.x - this.areaService.areaX))
+                    + ((this.canvasService.canvasPoint.y - this.areaService.areaY) *
+                       (this.canvasService.canvasPoint.y - this.areaService.areaY)));
   }
 
   private firstTimeInArea(): boolean {
@@ -108,7 +111,7 @@ export class accelerometerCheckComponent {
         const content = res + ' | ' + this.selectedListPickerIndex + ' with score : ' + this.drunkScore + '\n';
         myFile.writeText(content);
       }
-    )
+    );
   }
 
   public clearFile() {

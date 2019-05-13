@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { CanvasService } from './canvas.service';
 
 @Injectable({
   providedIn: 'root'

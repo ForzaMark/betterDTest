@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { accelerometerCheckComponent } from './accelerometerCheck/accelerometerCheck.component';
+import { AccelerometerCheckComponent } from './accelerometerCheck/accelerometerCheck.component';
 
 const routes: Routes = [
-  { path:'', component: accelerometerCheckComponent}
+  { path: '', component: AccelerometerCheckComponent}
 ];
 
 @NgModule({
