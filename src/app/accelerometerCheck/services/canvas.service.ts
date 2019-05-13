@@ -14,7 +14,7 @@ export class CanvasService {
   public canvasWidth = 1000;
 
   constructor(private areaService: AreaService) { }
-  
+
   public InitCanvas(args: CreateViewEventData): void {
     const nativeView = new android.widget.ImageView(args.context);
     nativeView.setScaleType(android.widget.ImageView.ScaleType.FIT_XY);
@@ -29,7 +29,7 @@ export class CanvasService {
     const blueColor = new android.graphics.Paint();
     blueColor.setARGB(255, 255, 0, 0);
     blueColor.setAntiAlias(true);
-    if(this.canvas){
+    if (this.canvas) {
       this.canvas.drawCircle(this.canvasPoint.x , this.canvasPoint.y, 5, blueColor );
     }
   }
@@ -51,6 +51,4 @@ export class CanvasService {
     lightGrayColor.setAntiAlias(true);
     this.canvas.drawCircle(this.areaService.areaX , this.areaService.areaY, this.areaService.areaRadius, lightGrayColor );
   }
-
- 
 }

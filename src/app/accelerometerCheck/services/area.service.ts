@@ -10,7 +10,7 @@ export class AreaService {
 
   constructor() {}
 
-  public createArea(canvasWidth: number, canvasHeight: number) {
+  public createArea(canvasWidth: number, canvasHeight: number): void {
       this.areaX = this.getRandomInt(canvasWidth);
       this.areaY = this.getRandomInt(canvasHeight);
   }

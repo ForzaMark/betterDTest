@@ -40,15 +40,15 @@ export class AccelerometerCheckComponent {
     });
    }
 
-  public newDrink() {
+  public newDrink(): void {
     this.enterState = true;
   }
 
-  public enterDrink() {
+  public enterDrink(): void {
     this.accelerometerService.startAccelerometer();
   }
 
-  public drinkChanged(args: any) {
+  public drinkChanged(args: any): void {
     const picker: ListPicker = args.object;
     this.selectedListPickerIndex = this.drinks[picker.selectedIndex].name;
   }
@@ -60,7 +60,7 @@ export class AccelerometerCheckComponent {
     this.userInArea();
   }
 
-  private testDataInArea() {
+  private testDataInArea(): void {
     if (this.proovingState && this.userInArea()) {
       this.drunkCounter = this.drunkCounter + 1;
     }
@@ -87,11 +87,11 @@ export class AccelerometerCheckComponent {
     return this.drunkCounter >= 1;
   }
 
-  private startAllPointCounter() {
+  private startAllPointCounter(): void {
     this.allCount = true;
   }
 
-  public readFile() {
+  public readFile(): void {
     const docFolder = fs.knownFolders.documents();
     const path = fs.path.join(docFolder.path, 'testText.txt');
     const myFile = fs.File.fromPath(path);
@@ -101,7 +101,7 @@ export class AccelerometerCheckComponent {
     ).catch((err) => console.log(err));
   }
 
-  public writeCorrectlyToFile() {
+  public writeCorrectlyToFile(): void {
     const docFolder = fs.knownFolders.documents();
     const path = fs.path.join(docFolder.path, 'testText.txt');
     const myFile = fs.File.fromPath(path);
@@ -114,7 +114,7 @@ export class AccelerometerCheckComponent {
     );
   }
 
-  public clearFile() {
+  public clearFile(): void {
     const docFolder = fs.knownFolders.documents();
     const path = fs.path.join(docFolder.path, 'testText.txt');
     const myFile = fs.File.fromPath(path);

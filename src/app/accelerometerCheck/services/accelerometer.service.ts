@@ -14,19 +14,19 @@ export class AccelerometerService {
 
   constructor() { }
 
-  public startAccelerometer() {
+  public startAccelerometer(): void {
     this.accelerometer.startAccelerometerUpdates((data: AccelerometerData) => {
       this.accelerometerData = data;
       this.setData(data);
-    },  { sensorDelay: "game" });
+    },  { sensorDelay: 'game' });
   }
 
-  public stopAccelerometer() {
+  public stopAccelerometer(): void {
     this.accelerometer.stopAccelerometerUpdates();
     this.accelerometerData = undefined;
   }
 
-  setData(data: AccelerometerData) {
+  setData(data: AccelerometerData): void {
       this.accelerometerDataSubject.next(data);
   }
 
