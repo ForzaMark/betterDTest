@@ -28,8 +28,8 @@ export class DrinkSelectorComponent implements OnInit {
 
   public enterDrink(): void {
     this.accelerometerService.selectedDrink = this.selectedListPickerIndex;
-    this.router.navigate(['/accelerometer-check']);
     this.accelerometerService.startAccelerometer();
+    this.router.navigate(['/accelerometer-check']);
   }
 
   public drinkChanged(args: any): void {

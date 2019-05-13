@@ -1,4 +1,4 @@
-<StackLayout>
+<StackLayout *ngIf="accelerometerService.accelerometerData">
     <TextView class="input input-border" text="{{accelerometerService.accelerometerData.x}}"></TextView>
     <TextView class="input input-border" text="{{accelerometerService.accelerometerData.y}}"></TextView>
     <TextView class="input input-border" text="{{accelerometerService.accelerometerData.z}}"></TextView>
