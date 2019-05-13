@@ -6,13 +6,15 @@ import { Injectable } from '@angular/core';
 export class AreaService {
   public areaX: number;
   public areaY: number;
-  public areaRadius = 50;
+  public areaRadius: number | undefined = undefined;
 
   constructor() {}
 
-  public createArea(canvasWidth: number, canvasHeight: number): void {
+  public createArea(canvasWidth: number, canvasHeight: number, areaRadius: number): void {
       this.areaX = this.getRandomInt(canvasWidth);
       this.areaY = this.getRandomInt(canvasHeight);
+      this.areaRadius = areaRadius;
+      console.log('create');
   }
 
   private getRandomInt(max: number): number {

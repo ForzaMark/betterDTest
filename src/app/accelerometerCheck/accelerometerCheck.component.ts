@@ -11,9 +11,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./accelerometerCheck.component.css']
 })
 export class AccelerometerCheckComponent {
-  private proovingState = false;
-  public enterState = false;
-  private allCount = false;
   private drunkScore = 0;
   private drunkCounter = 0;
 
@@ -21,59 +18,54 @@ export class AccelerometerCheckComponent {
               private canvasService: CanvasService,
               private areaService: AreaService,
               private router: Router) {
-
     this.accelerometerService.getData().subscribe(data => {
       if (data) {
         this.canvasService.canvasPoint = {
           x: data.x * 750 + (this.canvasService.canvasWidth / 2),
           y: data.y * -750 + (this.canvasService.canvasHeight / 2)
-      };
+        };
         this.canvasService.draw();
-        this.testDataInArea();
+        this.checkCursorPosition();
       }
     });
-   }
-
-  public startProoving(): void {
-    this.areaService.createArea(this.canvasService.canvasWidth, this.canvasService.canvasHeight);
-    this.canvasService.drawArea();
-    this.proovingState = true;
-    this.userInArea();
   }
 
-  private testDataInArea(): void {
-    if (this.proovingState && this.userInArea()) {
+  public initProoving(): void {
+    this.areaService.createArea(this.canvasService.canvasWidth, this.canvasService.canvasHeight, 50);
+    this.canvasService.drawArea();
+  }
+
+  private checkCursorPosition(): void {
+    if (this.isCursorInArea()) {
       this.drunkCounter = this.drunkCounter + 1;
     }
-    if (this.firstTimeInArea()) {
+    if (!(this.firstTimeInArea())) {
       this.drunkScore =  this.drunkScore + 1;
     }
     if (this.drunkCounter >= 100) {
-      this.drunkCounter = 0;
-      this.accelerometerService.stopAccelerometer();
-      this.enterState = false;
-      this.writeCorrectlyToFile();
-      this.router.navigate(['/start-menu']);
+      this.endCursorPositionCheck();
     }
   }
 
-  private userInArea(): boolean {
-    return this.areaService.areaRadius >=
-            Math.sqrt(((this.canvasService.canvasPoint.x - this.areaService.areaX) *
-                       (this.canvasService.canvasPoint.x - this.areaService.areaX))
-                    + ((this.canvasService.canvasPoint.y - this.areaService.areaY) *
-                       (this.canvasService.canvasPoint.y - this.areaService.areaY)));
+  private isCursorInArea(): boolean {
+    if (this.areaService.areaRadius) {
+      return this.areaService.areaRadius >= this.calculatePointAreaDistance();
+    }
+    return false;
   }
 
   private firstTimeInArea(): boolean {
-    return this.drunkCounter >= 1;
+    return !(this.drunkCounter >= 1);
   }
 
-  private startAllPointCounter(): void {
-    this.allCount = true;
+  private endCursorPositionCheck() {
+    this.drunkCounter = 0;
+    this.accelerometerService.stopAccelerometer();
+    this.writeScoreToFile();
+    this.router.navigate(['/start-menu']);
   }
 
-  public writeCorrectlyToFile(): void {
+  public writeScoreToFile(): void {
     const docFolder = fs.knownFolders.documents();
     const path = fs.path.join(docFolder.path, 'testText.txt');
     const myFile = fs.File.fromPath(path);
@@ -85,5 +77,12 @@ export class AccelerometerCheckComponent {
         myFile.writeText(content);
       }
     );
+  }
+
+  private calculatePointAreaDistance(): number {
+    return Math.sqrt(((this.canvasService.canvasPoint.x - this.areaService.areaX) *
+                      (this.canvasService.canvasPoint.x - this.areaService.areaX))
+                    + ((this.canvasService.canvasPoint.y - this.areaService.areaY) *
+                      (this.canvasService.canvasPoint.y - this.areaService.areaY)));
   }
 }
