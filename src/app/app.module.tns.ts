@@ -4,6 +4,8 @@ import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
 import { AppRoutingModule } from './app-routing.module.tns';
 import { AppComponent } from './app.component';
 import { AccelerometerCheckComponent } from './accelerometerCheck/accelerometerCheck.component';
+import { StartMenuComponent } from './start-menu/start-menu.component';
+import { DrinkSelectorComponent } from './drink-selector/drink-selector.component';
 
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
@@ -16,6 +18,8 @@ import { AccelerometerCheckComponent } from './accelerometerCheck/accelerometerC
   declarations: [
     AppComponent,
     AccelerometerCheckComponent,
+    StartMenuComponent,
+    DrinkSelectorComponent,
   ],
   imports: [
     NativeScriptModule,

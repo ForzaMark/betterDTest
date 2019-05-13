@@ -7,11 +7,15 @@ import { AccelerometerCheckComponent } from './accelerometerCheck/accelerometerC
 import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
 import { NativeScriptRouterModule } from 'nativescript-angular/router';
 import { NativeScriptFormsModule } from 'nativescript-angular/forms';
+import { StartMenuComponent } from './start-menu/start-menu.component';
+import { DrinkSelectorComponent } from './drink-selector/drink-selector.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AccelerometerCheckComponent
+    AccelerometerCheckComponent,
+    StartMenuComponent,
+    DrinkSelectorComponent
   ],
   imports: [
     BrowserModule,
