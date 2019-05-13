@@ -11,6 +11,7 @@ export class AccelerometerService {
   public accelerometer = require('nativescript-accelerometer');
   public accelerometerData: AccelerometerData;
   public accelerometerDataSubject = new Subject<AccelerometerData>();
+  public selectedDrink: string;
 
   constructor() { }
 

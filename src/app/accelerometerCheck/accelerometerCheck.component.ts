@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { AccelerometerService } from './services/accelerometer.service';
 import { CanvasService } from './services/canvas.service';
 import { AreaService } from './services/area.service';
-import { ListPicker } from 'tns-core-modules/ui/list-picker';
 import * as fs from 'tns-core-modules/file-system';
-import { Drink } from './types/drinkt.type';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-accelerometer-check',
@@ -17,41 +16,23 @@ export class AccelerometerCheckComponent {
   private allCount = false;
   private drunkScore = 0;
   private drunkCounter = 0;
-  public drinks  = [new Drink('Bier', 5, 500), new Drink('Likör', 18, 20),
-                    new Drink('Likör', 18, 40), new Drink('Wodka', 40, 20),
-                    new Drink('Wodka', 40, 20),  new Drink('Tequilla', 38, 20),
-                    new Drink('Tequilla', 38, 40), new Drink('Jägermeister', 35, 20),
-                    new Drink('Jägermeister', 45, 40), new Drink('Gin', 45, 20),
-                    new Drink('Gin', 45, 40), new Drink('Sonstiges', 50, 20),
-                    new Drink('Sonstiges', 50, 40), new Drink('Sonstiges härter', 60, 40)];
-  public selectedListPickerIndex: string;
 
   constructor(private accelerometerService: AccelerometerService,
               private canvasService: CanvasService,
-              private areaService: AreaService) {
+              private areaService: AreaService,
+              private router: Router) {
 
     this.accelerometerService.getData().subscribe(data => {
-      this.canvasService.canvasPoint = {
+      if (data) {
+        this.canvasService.canvasPoint = {
           x: data.x * 750 + (this.canvasService.canvasWidth / 2),
           y: data.y * -750 + (this.canvasService.canvasHeight / 2)
       };
-      this.canvasService.draw();
-      this.testDataInArea();
+        this.canvasService.draw();
+        this.testDataInArea();
+      }
     });
    }
-
-  public newDrink(): void {
-    this.enterState = true;
-  }
-
-  public enterDrink(): void {
-    this.accelerometerService.startAccelerometer();
-  }
-
-  public drinkChanged(args: any): void {
-    const picker: ListPicker = args.object;
-    this.selectedListPickerIndex = this.drinks[picker.selectedIndex].name;
-  }
 
   public startProoving(): void {
     this.areaService.createArea(this.canvasService.canvasWidth, this.canvasService.canvasHeight);
@@ -72,6 +53,7 @@ export class AccelerometerCheckComponent {
       this.accelerometerService.stopAccelerometer();
       this.enterState = false;
       this.writeCorrectlyToFile();
+      this.router.navigate(['/start-menu']);
     }
   }
 
@@ -91,16 +73,6 @@ export class AccelerometerCheckComponent {
     this.allCount = true;
   }
 
-  public readFile(): void {
-    const docFolder = fs.knownFolders.documents();
-    const path = fs.path.join(docFolder.path, 'testText.txt');
-    const myFile = fs.File.fromPath(path);
-
-    myFile.readText().then(
-      (res) => alert(res)
-    ).catch((err) => console.log(err));
-  }
-
   public writeCorrectlyToFile(): void {
     const docFolder = fs.knownFolders.documents();
     const path = fs.path.join(docFolder.path, 'testText.txt');
@@ -108,17 +80,10 @@ export class AccelerometerCheckComponent {
 
     myFile.readText().then(
       (res) => {
-        const content = res + ' | ' + this.selectedListPickerIndex + ' with score : ' + this.drunkScore + '\n';
+        const content = res + ' | ' + this.accelerometerService.selectedDrink + ' with score : ' + this.drunkScore + '\n';
+        this.drunkScore = 0;
         myFile.writeText(content);
       }
     );
-  }
-
-  public clearFile(): void {
-    const docFolder = fs.knownFolders.documents();
-    const path = fs.path.join(docFolder.path, 'testText.txt');
-    const myFile = fs.File.fromPath(path);
-
-    myFile.writeText('');
   }
 }

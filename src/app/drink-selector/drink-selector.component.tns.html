@@ -1,1 +1,4 @@
-<Button text="drink-selector works!" class="btn btn-primary"></Button>
+<StackLayout>
+    <ListPicker [items]="drinks" (selectedIndexChange)="drinkChanged($event)" class="p-15" text="drinks.name"></ListPicker>
+    <Button class="btn btn-primary" text="Enter New Drink" (tap)="enterDrink()"></Button>
+</StackLayout>

@@ -3,10 +3,14 @@ import { NativeScriptRouterModule } from 'nativescript-angular/router';
 import { Routes } from '@angular/router';
 
 import { AccelerometerCheckComponent } from './accelerometerCheck/accelerometerCheck.component';
+import { StartMenuComponent } from './start-menu/start-menu.component';
+import { DrinkSelectorComponent } from './drink-selector/drink-selector.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/auto-generated', pathMatch: 'full' },
-  { path: 'auto-generated', component: AccelerometerCheckComponent },
+  { path: '', redirectTo: '/start-menu', pathMatch: 'full' },
+  { path: 'start-menu', component: StartMenuComponent},
+  { path: 'drink-selector', component: DrinkSelectorComponent},
+  { path: 'accelerometer-check', component: AccelerometerCheckComponent }
 ];
 
 @NgModule({
