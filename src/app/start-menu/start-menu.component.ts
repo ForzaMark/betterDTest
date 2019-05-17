@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import * as fs from 'tns-core-modules/file-system';
 import { Router } from '@angular/router';
+import { registerElement } from 'nativescript-angular/element-registry';
+import { CardView } from 'nativescript-cardview';
+
+registerElement('CardView', () => CardView);
 
 
 @Component({

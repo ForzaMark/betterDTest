@@ -1,5 +1,28 @@
-<StackLayout>
-    <Button class="btn btn-primary" text="New Drink" (tap)="newDrink()"></Button>
-    <Button class="btn btn-primary" text="New Party" (tap)="clearFile()"></Button>
-    <Button class="btn btn-primary" text="readFile" (tap)="readFile()"></Button>
+<ActionBar title="Mainmenu" class="bg-dark-menu"></ActionBar>
+<StackLayout class="bg-dark">
+    <CardView class="card" elevation="40"
+        radius="10" ios:shadowRadius="3">
+        <StackLayout class="card-layout">
+            <Label class="col-w h2" text="gv"></Label>
+            <Label class="col-w" textWrap="true" text="data[0].content"></Label>
+            <Button class="btn btn-primary" text="New Drink" (tap)="newDrink()"></Button>
+        </StackLayout>
+    </CardView>
+    <CardView class="card" elevation="40"
+        radius="10" ios:shadowRadius="3">
+        <StackLayout class="card-layout">
+            <Label class="col-w h2" text="gv"></Label>
+            <Label class="col-w" textWrap="true" text="data[0].content"></Label>
+            <Button class="btn btn-primary" text="New Party" (tap)="clearFile()"></Button>
+        </StackLayout>
+    </CardView>
+    <CardView class="card" elevation="40"
+        radius="10" ios:shadowRadius="3">
+        <StackLayout class="card-layout">
+            <Label class="col-w h2" text="gv"></Label>
+            <Label class="col-w" textWrap="true" text="data[0].content"></Label>  
+            <Button class="btn btn-primary" text="Read Drinks and Scores" (tap)="readFile()"></Button>
+        </StackLayout>
+    </CardView>
 </StackLayout>
+    

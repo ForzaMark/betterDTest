@@ -1,1 +1,31 @@
 /* Add mobile styles for the component here.  */
+.bg-dark{
+    background-color: #0F122B;
+}
+
+.bg-dark-menu{
+    background-color: #142D3D;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #25CCE6;
+    color: white;
+}
+
+.card {
+    background-color: #142D3D;
+    
+    margin: 15 15 0;
+}
+.card-layout {
+    padding: 20;
+    color: white;
+}
+.card-layout .h1 {
+    margin-bottom: 15;
+}
+
+.col-w{
+    color: white;
+}

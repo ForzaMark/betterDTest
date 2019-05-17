@@ -1,4 +1,5 @@
-<StackLayout *ngIf="accelerometerService.accelerometerData">
+<ActionBar title="DrunknessCheck" class="bg-lightblue"></ActionBar>
+<StackLayout *ngIf="accelerometerService.accelerometerData" class="bg-lightblue">
     <TextView class="input input-border" text="{{accelerometerService.accelerometerData.x}}"></TextView>
     <TextView class="input input-border" text="{{accelerometerService.accelerometerData.y}}"></TextView>
     <TextView class="input input-border" text="{{accelerometerService.accelerometerData.z}}"></TextView>
