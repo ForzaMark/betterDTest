@@ -24,7 +24,7 @@ export class AccelerometerCheckComponent {
           x: data.x * 750 + (this.canvasService.canvasWidth / 2),
           y: data.y * -750 + (this.canvasService.canvasHeight / 2)
         };
-        this.canvasService.draw();
+        this.canvasService.drawCursor();
         this.checkCursorPosition();
       }
     });

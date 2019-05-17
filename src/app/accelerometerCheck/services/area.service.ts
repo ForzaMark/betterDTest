@@ -14,7 +14,6 @@ export class AreaService {
       this.areaX = this.getRandomInt(canvasWidth);
       this.areaY = this.getRandomInt(canvasHeight);
       this.areaRadius = areaRadius;
-      console.log('create');
   }
 
   private getRandomInt(max: number): number {

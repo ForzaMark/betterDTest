@@ -25,7 +25,7 @@ export class CanvasService {
     args.view = nativeView;
   }
 
-  public draw(): void {
+  public drawCursor(): void {
     const blueColor = new android.graphics.Paint();
     blueColor.setARGB(255, 255, 0, 0);
     blueColor.setAntiAlias(true);
@@ -46,11 +46,9 @@ export class CanvasService {
   }
 
   public drawArea(): void {
-    console.log('draw');
     const lightGrayColor = new android.graphics.Paint();
     lightGrayColor.setARGB(177, 220, 220, 220);
     lightGrayColor.setAntiAlias(true);
-    console.log(this.areaService.areaRadius);
     this.canvas.drawCircle(this.areaService.areaX , this.areaService.areaY, this.areaService.areaRadius, lightGrayColor );
   }
 }
