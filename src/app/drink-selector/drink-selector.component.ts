@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class DrinkSelectorComponent implements OnInit {
 
+  public listPickerInit = false;
+
   public drinks  = [new Drink('Bier', 5, 500), new Drink('Likör', 18, 20),
                     new Drink('Likör', 18, 40), new Drink('Wodka', 40, 20),
                     new Drink('Wodka', 40, 20),  new Drink('Tequilla', 38, 20),
@@ -34,6 +36,10 @@ export class DrinkSelectorComponent implements OnInit {
 
   public drinkChanged(args: any): void {
     const picker: ListPicker = args.object;
+    if (!this.listPickerInit) {
+      this.listPickerInit = true;
+      picker.selectedIndex = 2;
+    }
     this.selectedListPickerIndex = this.drinks[picker.selectedIndex].name;
   }
 }
