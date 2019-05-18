@@ -3,7 +3,6 @@ import * as fs from 'tns-core-modules/file-system';
 import { Router } from '@angular/router';
 import { registerElement } from 'nativescript-angular/element-registry';
 import { CardView } from 'nativescript-cardview';
-
 registerElement('CardView', () => CardView);
 
 
@@ -14,9 +13,12 @@ registerElement('CardView', () => CardView);
 })
 export class StartMenuComponent implements OnInit {
 
+  public drinksAndScore: string[] = [];
+
   constructor(private readonly router: Router) { }
 
   ngOnInit() {
+    this.readFile();
   }
 
   public newDrink(): void {
@@ -29,7 +31,7 @@ export class StartMenuComponent implements OnInit {
     const myFile = fs.File.fromPath(path);
 
     myFile.readText().then(
-      (res) => alert(res)
+      (res) => this.drinksAndScore = res.split('|'),
     ).catch((err) => console.log(err));
   }
 
@@ -37,7 +39,6 @@ export class StartMenuComponent implements OnInit {
     const docFolder = fs.knownFolders.documents();
     const path = fs.path.join(docFolder.path, 'testText.txt');
     const myFile = fs.File.fromPath(path);
-
     myFile.writeText('');
   }
 

@@ -1,5 +1,10 @@
-<ActionBar title="DrinkSelector"></ActionBar>
-<StackLayout>
-    <ListPicker [items]="drinks" (selectedIndexChange)="drinkChanged($event)" class="p-15" text="drinks.name"></ListPicker>
-    <Button class="btn btn-primary" text="Enter New Drink" (tap)="enterDrink()"></Button>
+<ActionBar title="DrinkSelector" class="bg-dark-menu"></ActionBar>
+<StackLayout class="bg-dark">
+        <CardView class="card" elevation="40" radius="10" ios:shadowRadius="3">
+            <StackLayout class="card-layout">
+                    <label class="h2 color-white" text="Select the drink"></label>
+                    <ListPicker [items]="drinks" (selectedIndexChange)="drinkChanged($event)" class="color-white" text="drinks.name"></ListPicker>
+                    <Button class="btn btn-primary" text="Enter New Drink" (tap)="enterDrink()"></Button>
+            </StackLayout>
+        </CardView>
 </StackLayout>

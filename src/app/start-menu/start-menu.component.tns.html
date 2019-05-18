@@ -1,28 +1,28 @@
 <ActionBar title="Mainmenu" class="bg-dark-menu"></ActionBar>
-<StackLayout class="bg-dark">
-    <CardView class="card" elevation="40"
-        radius="10" ios:shadowRadius="3">
-        <StackLayout class="card-layout">
-            <Label class="col-w h2" text="gv"></Label>
-            <Label class="col-w" textWrap="true" text="data[0].content"></Label>
-            <Button class="btn btn-primary" text="New Drink" (tap)="newDrink()"></Button>
-        </StackLayout>
-    </CardView>
-    <CardView class="card" elevation="40"
-        radius="10" ios:shadowRadius="3">
-        <StackLayout class="card-layout">
-            <Label class="col-w h2" text="gv"></Label>
-            <Label class="col-w" textWrap="true" text="data[0].content"></Label>
-            <Button class="btn btn-primary" text="New Party" (tap)="clearFile()"></Button>
-        </StackLayout>
-    </CardView>
-    <CardView class="card" elevation="40"
-        radius="10" ios:shadowRadius="3">
-        <StackLayout class="card-layout">
-            <Label class="col-w h2" text="gv"></Label>
-            <Label class="col-w" textWrap="true" text="data[0].content"></Label>  
-            <Button class="btn btn-primary" text="Read Drinks and Scores" (tap)="readFile()"></Button>
-        </StackLayout>
-    </CardView>
-</StackLayout>
+<ScrollView>
+    <StackLayout class="bg-dark">
+            <CardView class="card" elevation="40" radius="10" ios:shadowRadius="3">
+                <StackLayout class="card-layout">
+                    <Label class="color-white h2 mb-3" text="Enter new Drink"></Label>
+                    <!-- <StackLayout class="hr-light"></StackLayout> -->
+                    <Label class="color-white mt3" textWrap="true" text="Tap here to enter a new drink after playing a little game which approximates your level of drunkness"></Label>
+                    <Button class="btn btn-primary" text="New Drink" (tap)="newDrink()"></Button>
+                </StackLayout>
+            </CardView>
+            <CardView class="card" elevation="40" radius="10" ios:shadowRadius="3">
+                <StackLayout class="card-layout">
+                    <Label class="color-white h2" text="Todays drinks and score"></Label>
+                    <Label class="color-white" *ngFor="let drinkScore of this.drinksAndScore" [text]="drinkScore"></Label>
+                </StackLayout>
+            </CardView>
+            <CardView class="card mb-5" elevation="40" radius="10" ios:shadowRadius="3">
+            <StackLayout class="card-layout">
+                <Label class="color-white h2" text="New Party"></Label>
+                <Label class="color-white" textWrap="true" text="Tap here to clear the data of your last party and start a new monitoring session"></Label>
+                <Button class="btn btn-primary" text="New Party" (tap)="clearFile()"></Button>
+            </StackLayout>
+        </CardView>
+    </StackLayout>
+</ScrollView>
+
     

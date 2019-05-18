@@ -72,7 +72,7 @@ export class AccelerometerCheckComponent {
 
     myFile.readText().then(
       (res) => {
-        const content = res + ' | ' + this.accelerometerService.selectedDrink + ' with score : ' + this.drunkScore + '\n';
+        const content = res + ' | ' + this.accelerometerService.selectedDrink + ' with score : ' + this.drunkScore;
         this.drunkScore = 0;
         myFile.writeText(content);
       }

@@ -1,12 +1,8 @@
-<ActionBar title="DrunknessCheck" class="bg-lightblue"></ActionBar>
-<StackLayout *ngIf="accelerometerService.accelerometerData" class="bg-lightblue">
+<ActionBar title="DrunknessCheck" class="bg-dark-menu"></ActionBar>
+<StackLayout *ngIf="accelerometerService.accelerometerData" class="bg-dark">
     <TextView class="input input-border" text="{{accelerometerService.accelerometerData.x}}"></TextView>
     <TextView class="input input-border" text="{{accelerometerService.accelerometerData.y}}"></TextView>
     <TextView class="input input-border" text="{{accelerometerService.accelerometerData.z}}"></TextView>
-    <Placeholder (creatingView)="canvasService.InitCanvas($event)" 
-                 class="test b-black" 
-                 style="color:#04ccf0; border: 5px solid #000;" 
-                 text="test">
-    </Placeholder>
-    <Button class="btn btn-primary" text="startProoving" (tap)="initProoving()"></Button>
+    <Placeholder (creatingView)="canvasService.InitCanvas($event)" class="test bg-white"></Placeholder>
+    <Button class="btn btn-primary" text="Start ScoreCounter" (tap)="initProoving()"></Button>
 </StackLayout>
