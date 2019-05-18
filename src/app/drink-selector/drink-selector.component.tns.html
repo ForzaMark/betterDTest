@@ -3,7 +3,8 @@
         <CardView class="card" elevation="40" radius="10" ios:shadowRadius="3">
             <StackLayout class="card-layout">
                     <label class="h2 color-white" text="Select the drink"></label>
-                    <ListPicker [items]="drinks" (selectedIndexChange)="drinkChanged($event)" class="color-white" text="drinks.name"></ListPicker>
+                    <StackLayout class="hr-light m-10"></StackLayout>
+                    <ListPicker [items]="drinks" (selectedIndexChange)="drinkChanged($event)" class="color-white" loaded="onListPickerLoaded()" text="drinks.name"></ListPicker>
                     <Button class="btn btn-primary" text="Enter New Drink" (tap)="enterDrink()"></Button>
             </StackLayout>
         </CardView>

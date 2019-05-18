@@ -36,5 +36,4 @@ export class DrinkSelectorComponent implements OnInit {
     const picker: ListPicker = args.object;
     this.selectedListPickerIndex = this.drinks[picker.selectedIndex].name;
   }
-
 }
