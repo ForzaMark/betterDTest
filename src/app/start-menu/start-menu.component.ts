@@ -39,7 +39,9 @@ export class StartMenuComponent implements OnInit {
     const docFolder = fs.knownFolders.documents();
     const path = fs.path.join(docFolder.path, 'testText.txt');
     const myFile = fs.File.fromPath(path);
-    myFile.writeText('');
+    myFile.writeText('').then(
+      () => this.readFile()
+    );
   }
 
 }
