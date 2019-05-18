@@ -1,27 +1,23 @@
 # DrunkTester
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+This project was created with Nativescript and Angular
 
-## Development server
+# Get Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* To run on the Nativescript Server, download NativeScript PlayGround and NativeScript Preview from the Google Play Store.
 
-## Code scaffolding
+Open CMD and type `tns preview --bundle`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Scan the upcoming QR-Code via the Nativescript PlayGround App.
 
-## Build
+* To run the application local on your device
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Connect your device with your Computer via USB.
 
-## Running unit tests
+Activate Developer Options and USB-Debugging on your phone.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Open CMD in administrator mode and type `tns device android` to check if your device is correctly connected to your computer.
 
-## Running end-to-end tests
+If the status is connected type `tns run android --bundle` and wait until the build finish.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
