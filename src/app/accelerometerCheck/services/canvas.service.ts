@@ -26,11 +26,11 @@ export class CanvasService {
   }
 
   public drawCursor(): void {
-    const blueColor = new android.graphics.Paint();
-    blueColor.setARGB(255, 255, 0, 0);
-    blueColor.setAntiAlias(true);
+    const redColor = new android.graphics.Paint();
+    redColor.setARGB(255, 255, 0, 0);
+    redColor.setAntiAlias(true);
     if (this.canvas) {
-      this.canvas.drawCircle(this.canvasPoint.x , this.canvasPoint.y, 5, blueColor );
+      this.canvas.drawCircle(this.canvasPoint.x , this.canvasPoint.y, 5, redColor );
     }
   }
 
@@ -50,5 +50,17 @@ export class CanvasService {
     lightGrayColor.setARGB(177, 220, 220, 220);
     lightGrayColor.setAntiAlias(true);
     this.canvas.drawCircle(this.areaService.areaX , this.areaService.areaY, this.areaService.areaRadius, lightGrayColor );
+  }
+
+  public drawBalanceBoard() {
+    const redColor = new android.graphics.Paint();
+    redColor.setARGB(255, 255, 0, 0);
+    redColor.setAntiAlias(true);
+    if (this.canvas) {
+      console.log(this.canvasPoint.y);
+      this.canvas.drawCircle(this.canvasPoint.x , this.canvasPoint.y, 5, redColor );
+      this.canvas.drawLine(100, 700, 900, 700 + this.canvasPoint.x, redColor);
+      
+    }
   }
 }

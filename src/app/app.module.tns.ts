@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AccelerometerCheckComponent } from './accelerometerCheck/accelerometerCheck.component';
 import { StartMenuComponent } from './start-menu/start-menu.component';
 import { DrinkSelectorComponent } from './drink-selector/drink-selector.component';
+import { BalanceTestComponent } from './balance-test/balance-test.component';
 
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
@@ -20,6 +21,7 @@ import { DrinkSelectorComponent } from './drink-selector/drink-selector.componen
     AccelerometerCheckComponent,
     StartMenuComponent,
     DrinkSelectorComponent,
+    BalanceTestComponent,
   ],
   imports: [
     NativeScriptModule,

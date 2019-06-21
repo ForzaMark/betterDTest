@@ -9,13 +9,15 @@ import { NativeScriptRouterModule } from 'nativescript-angular/router';
 import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 import { StartMenuComponent } from './start-menu/start-menu.component';
 import { DrinkSelectorComponent } from './drink-selector/drink-selector.component';
+import { BalanceTestComponent } from './balance-test/balance-test.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccelerometerCheckComponent,
     StartMenuComponent,
-    DrinkSelectorComponent
+    DrinkSelectorComponent,
+    BalanceTestComponent
   ],
   imports: [
     BrowserModule,
