@@ -19,16 +19,11 @@ export class BalanceTestComponent implements OnInit {
           y: data.y * 500
         };
         this.canvasService.drawBalanceBoard();
-        // this.checkCursorPosition();
-        //saknnn
+        this.canvasService.drawBalanceBall();
       }
     });
    }
 
   ngOnInit() {
-  }
-
-  clearCanvas() {
-    this.canvasService.clear();
   }
 }

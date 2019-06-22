@@ -61,4 +61,13 @@ export class CanvasService {
       this.canvas.drawLine(100, 700 + (this.canvasPoint.x * -1), 900, 700 + this.canvasPoint.x, redColor);
     }
   }
+
+  public drawBalanceBall() {
+    const lightGrayColor = new android.graphics.Paint();
+    lightGrayColor.setARGB(177, 0, 220, 220);
+    lightGrayColor.setAntiAlias(true);
+    if (this.canvas) {
+      this.canvas.drawCircle(500 + (this.canvasPoint.x), 690 + this.canvasPoint.x , 10, lightGrayColor);
+    }
+  }
 }
