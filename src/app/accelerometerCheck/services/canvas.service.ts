@@ -57,10 +57,8 @@ export class CanvasService {
     redColor.setARGB(255, 255, 0, 0);
     redColor.setAntiAlias(true);
     if (this.canvas) {
-      console.log(this.canvasPoint.y);
-      this.canvas.drawCircle(this.canvasPoint.x , this.canvasPoint.y, 5, redColor );
-      this.canvas.drawLine(100, 700, 900, 700 + this.canvasPoint.x, redColor);
-      
+      this.canvas.drawColor(-1);
+      this.canvas.drawLine(100, 700 + (this.canvasPoint.x * -1), 900, 700 + this.canvasPoint.x, redColor);
     }
   }
 }

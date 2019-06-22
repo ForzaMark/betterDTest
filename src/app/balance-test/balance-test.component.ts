@@ -14,7 +14,6 @@ export class BalanceTestComponent implements OnInit {
               private accelerometerService: AccelerometerService) {
     this.accelerometerService.getData().subscribe(data => {
       if (data) {
-        console.log('dat: '+ data.y)
         this.canvasService.canvasPoint = {
           x: data.x * 500,
           y: data.y * 500
@@ -27,5 +26,9 @@ export class BalanceTestComponent implements OnInit {
    }
 
   ngOnInit() {
+  }
+
+  clearCanvas() {
+    this.canvasService.clear();
   }
 }
