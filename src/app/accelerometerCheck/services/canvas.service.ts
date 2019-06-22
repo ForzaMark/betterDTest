@@ -37,7 +37,7 @@ export class CanvasService {
   public drawBorder(): void {
     const blackColor = new android.graphics.Paint();
     blackColor.setStrokeWidth(10);
-    blackColor.setARGB(255, 0, 0, 0);
+    blackColor.setARGB(255, 20, 210, 210);
     blackColor.setAntiAlias(true);
     this.canvas.drawLine( 0, 0, 0, this.canvasHeight, blackColor);
     this.canvas.drawLine( 0, 0, this.canvasWidth, 0, blackColor);
