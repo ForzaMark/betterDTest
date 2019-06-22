@@ -25,6 +25,10 @@ export class StartMenuComponent implements OnInit {
     this.router.navigate(['/drink-selector']);
   }
 
+  public balanceBoard() {
+    this.router.navigate(['/balance-test']);
+  }
+
   public readFile(): void {
     const docFolder = fs.knownFolders.documents();
     const path = fs.path.join(docFolder.path, 'testText.txt');

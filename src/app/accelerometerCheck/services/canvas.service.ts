@@ -53,20 +53,24 @@ export class CanvasService {
   }
 
   public drawBalanceBoard() {
+    console.log('board');
     const redColor = new android.graphics.Paint();
     redColor.setARGB(255, 255, 0, 0);
     redColor.setAntiAlias(true);
-    if (this.canvas) {
+    if (this.canvas && this.canvasPoint) {
       this.canvas.drawColor(-1);
       this.canvas.drawLine(100, 700 + (this.canvasPoint.x * -1), 900, 700 + this.canvasPoint.x, redColor);
     }
   }
 
   public drawBalanceBall() {
+    console.log('ball');
     const lightGrayColor = new android.graphics.Paint();
     lightGrayColor.setARGB(177, 0, 220, 220);
     lightGrayColor.setAntiAlias(true);
-    if (this.canvas) {
+    if (this.canvas && this.canvasPoint) {
+      const steigung =  (700 + (this.canvasPoint.x * -1) - 900) / (100 - (700 + this.canvasPoint.x));
+      console.log(steigung);
       this.canvas.drawCircle(500 + (this.canvasPoint.x), 690 + this.canvasPoint.x , 10, lightGrayColor);
     }
   }

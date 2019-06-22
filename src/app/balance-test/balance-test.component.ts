@@ -12,7 +12,9 @@ export class BalanceTestComponent implements OnInit {
 
   constructor(private canvasService: CanvasService,
               private accelerometerService: AccelerometerService) {
+            console.log('construct');
     this.accelerometerService.getData().subscribe(data => {
+      console.log('update');
       if (data) {
         this.canvasService.canvasPoint = {
           x: data.x * 500,

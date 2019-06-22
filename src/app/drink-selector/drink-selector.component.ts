@@ -31,10 +31,8 @@ export class DrinkSelectorComponent implements OnInit {
   public enterDrink(): void {
     this.accelerometerService.selectedDrink = this.selectedListPickerIndex;
     this.accelerometerService.startAccelerometer();
-    this.router.navigate(['/balance-test']);
+    this.router.navigate(['/accelerometer-check']);
   }
-
-  //dsjfslkmdfskmfslkjjj
 
   public drinkChanged(args: any): void {
     const picker: ListPicker = args.object;

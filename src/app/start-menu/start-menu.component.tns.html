@@ -11,6 +11,14 @@
             </CardView>
             <CardView class="card" elevation="40" radius="10" ios:shadowRadius="3">
                 <StackLayout class="card-layout">
+                    <Label class="color-white h2 mb-3" text="Enter new Drink"></Label>
+                    <StackLayout class="hr-light m-10"></StackLayout>
+                    <Label class="color-white mt3" textWrap="true" text="second Game"></Label>
+                    <Button class="btn btn-primary" text="New Drink" (tap)="balanceBoard()"></Button>
+                </StackLayout>
+            </CardView>
+            <CardView class="card" elevation="40" radius="10" ios:shadowRadius="3">
+                <StackLayout class="card-layout">
                     <Label class="color-white h2" text="Todays drinks and score"></Label>
                     <StackLayout class="hr-light m-10"></StackLayout>
                     <Label class="color-white" *ngFor="let drinkScore of this.drinksAndScore" [text]="drinkScore"></Label>
